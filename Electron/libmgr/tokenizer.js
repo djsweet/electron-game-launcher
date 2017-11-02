@@ -126,11 +126,11 @@ Tokenizer.prototype._doNormalChar = function (chr, cc, strOff, oot) {
         this._strCol   = this._col;
         this._strStart = strOff + 1;
     } else if (!(ccIsWhitespace(cc))) {
-        oot.push({
+        oot[oot.length] = {
             type:   chr,
             line:   this._line,
             column: this._col
-        });
+        };
     }
     return false;
 }
@@ -166,12 +166,12 @@ Tokenizer.prototype._doStringChar = function (cc, str, len, off, oot) {
         } else {
             goingOut = str.substring(this._strStart, off);
         }
-        oot.push({
+        oot[oot.length] = {
             type:   stringType,
             value:  goingOut,
             line:   this._strLine,
             column: this._strCol
-        });
+        };
         this._strTok  = null;
         this._strLine = 0;
         this._strCol  = 0;

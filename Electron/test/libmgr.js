@@ -88,7 +88,67 @@ describe('libmgr tokenization', function() {
     }
 
     function generateInvalidData() {
-        return [];
+        params = [
+            {
+                sslo: 2,
+                sshi: 5,
+                wss: 1,
+                nlines: 30,
+                comment: false
+            },
+            {
+                sslo: 2,
+                sshi: 5,
+                wss: 1,
+                nlines: 30,
+                comment: true
+            },
+            {
+                sslo: 3,
+                sshi: 7,
+                wss: 2,
+                nlines: 75,
+                comment: false
+            },
+            {
+                sslo: 3,
+                sshi: 7,
+                wss: 3,
+                nlines: 82,
+                comment: true
+            },
+            {
+                sslo: 5,
+                sshi: 9,
+                wss: 5,
+                nlines: 326,
+                comment: false
+            },
+            {
+                sslo: 5,
+                sshi: 9,
+                wss: 4,
+                nlines: 587,
+                comment: true
+            },
+            {
+                sslo: 10,
+                sshi: 13,
+                wss: 2,
+                nlines: 2048,
+                comment: false
+            },
+            {
+                sslo: 10,
+                sshi: 13,
+                wss: 5,
+                nlines: 3097,
+                comment: true
+            }
+        ];
+        return params.map((p) =>
+            gen.reifyInvalidData(p.sslo, p.sshi, p.wss, p.nlines, p.comment)
+        );
     }
 
     describe('successful tokenization', function() {
